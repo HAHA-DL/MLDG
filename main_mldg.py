@@ -22,8 +22,10 @@ def main():
                                   help="index of unseen domain")
     train_arg_parser.add_argument("--lr", type=float, default=0.0001,
                                   help='learning rate of the model')
-    train_arg_parser.add_argument("--meta_step_scale", type=float, default=0.0001,
-                                  help='the scale for the meta lr')
+    train_arg_parser.add_argument("--meta_step_size", type=float, default=0.0001,
+                                  help='meta step size')
+    train_arg_parser.add_argument("--meta_val_beta", type=float, default=0.0001,
+                                  help='the strength of the meta val loss')
     train_arg_parser.add_argument("--weight_decay", type=float, default=0.00005,
                                   help='weight decay')
     train_arg_parser.add_argument("--momentum", type=float, default=0.9,
