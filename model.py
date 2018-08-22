@@ -312,7 +312,6 @@ class ModelMLDG(ModelBaseline):
         for ite in range(flags.inner_loops):
 
             self.scheduler.step(epoch=ite)
-            self.meta_step_scale = flags.meta_step_scale
 
             # select the validation domain for meta val
             index_val = np.random.choice(a=np.arange(0, len(self.batImageGenTrains)), size=1)[0]
@@ -354,12 +353,12 @@ class ModelMLDG(ModelBaseline):
             # forward with the adapted parameters
             outputs_val, _ = self.network(x=inputs_val,
                                           meta_loss=meta_train_loss,
-                                          meta_step_size=self.meta_step_scale * self.scheduler.get_lr()[0],
+                                          meta_step_size=flags.meta_step_size,
                                           stop_gradient=flags.stop_gradient)
 
             meta_val_loss = self.loss_fn(outputs_val, labels_val)
 
-            total_loss = meta_train_loss + meta_val_loss
+            total_loss = meta_train_loss + meta_val_loss * flags.meta_val_beta
 
             # init the grad to zeros first
             self.optimizer.zero_grad()
