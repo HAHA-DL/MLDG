@@ -32,4 +32,4 @@ sh run_mldg.sh 'data_root/'
  ```
  
  ## Your own data
- Please tune the meta_step_scale for your own data, this parameter is related to alpha in paper which should be tuned for different cases.
+ Please tune the meta_step_size and meta_val_beta for your own data, this parameter is related to alpha in paper which should be tuned for different cases.
