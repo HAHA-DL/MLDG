@@ -18,7 +18,6 @@ python main_mldg.py train \
 --step_size=15000 \
 --state_dict='' \
 --data_root=$1 \
---stop_gradient=True \
 --meta_step_size=5e-1 \
 --meta_val_beta=1.0
 done
